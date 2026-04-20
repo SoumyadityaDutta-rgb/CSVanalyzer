@@ -1,21 +1,24 @@
 import streamlit as st
 import pandas as pd
 import os
+import tempfile
 
-os.environ.setdefault("MPLCONFIGDIR", os.path.join(os.getcwd(), ".matplotlib"))
+os.environ.setdefault("MPLCONFIGDIR", os.path.join(tempfile.gettempdir(), "matplotlib"))
+
+import matplotlib
+matplotlib.use("Agg")  # Non-interactive backend for server rendering
 
 import matplotlib.pyplot as plt
-import matplotlib
 import io
 import streamlit.components.v1 as components
 from fpdf import FPDF
 
 try:
     from ydata_profiling import ProfileReport
-except ImportError:
+    PROFILE_IMPORT_ERROR = None
+except ImportError as exc:
     ProfileReport = None
-
-matplotlib.use("Agg")  # Non-interactive backend for server rendering
+    PROFILE_IMPORT_ERROR = str(exc)
 
 st.set_page_config(page_title="CSV Data Processor & Report Generator", layout="wide")
 
@@ -207,6 +210,14 @@ if uploaded_file is not None:
                 "Insight Lens is not installed in this virtual environment. "
                 "Run: python -m pip install -r requirements.txt"
             )
+            st.info(
+                "On Streamlit Cloud, confirm that requirements.txt in GitHub "
+                "contains ydata-profiling==4.6.4 and that the app is deployed "
+                "with Python 3.11."
+            )
+            if PROFILE_IMPORT_ERROR:
+                with st.expander("Import details"):
+                    st.code(PROFILE_IMPORT_ERROR)
         else:
             max_rows = st.slider(
                 "Rows to analyze",
