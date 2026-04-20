@@ -1,0 +1,26 @@
+# Virtual environments
+venv/
+venv2/
+.venv/
+env/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Streamlit and local runtime cache
+.streamlit/secrets.toml
+.matplotlib/
+
+# Generated reports and exports
+cleaned_data.csv
+data_analysis_report.pdf
+insight_lens_report.html
+*.html
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

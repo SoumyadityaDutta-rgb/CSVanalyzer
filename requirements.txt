@@ -1,0 +1,25 @@
+# Streamlit Cloud runtime is pinned in runtime.txt.
+
+# Core app
+streamlit==1.31.0
+fpdf2==2.8.7
+
+# Data processing and plotting
+pandas==2.0.3
+numpy==1.25.2
+matplotlib==3.8.4
+scipy==1.11.4
+numba==0.58.1
+seaborn==0.12.2
+
+# Automated EDA report engine and required runtime pins
+ydata-profiling==4.6.4
+visions==0.7.5
+tqdm==4.67.3
+statsmodels==0.14.6
+typeguard==4.5.1
+wordcloud==1.9.6
+pydantic==2.13.3
+phik==0.12.5
+multimethod==1.12
+tangled-up-in-unicode==0.2.0
