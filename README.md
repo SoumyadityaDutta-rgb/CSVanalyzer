@@ -59,30 +59,6 @@ Or run Streamlit directly:
 .\venv\Scripts\streamlit.exe run app.py
 ```
 
-## Deploy To Streamlit Cloud
-
-Push these project files to GitHub:
-
-- `app.py`
-- `requirements.txt`
-- `runtime.txt`
-- `README.md`
-- `LICENSE`
-
-Do not upload `venv`, `venv2`, `.matplotlib`, or `__pycache__`. They are ignored by `.gitignore` and Streamlit Cloud will rebuild the environment from `requirements.txt`.
-
-In Streamlit Cloud, set the main file path to:
-
-```text
-app.py
-```
-
-Before clicking deploy, open **Advanced settings** and choose **Python 3.11**.
-
-This is important because the Insight Lens report engine uses scientific packages that may fail to install on Streamlit Cloud's newest default Python version.
-
-If you already deployed once and saw "Error installing requirements," delete that Streamlit app and redeploy it with **Python 3.11** selected in Advanced settings. Streamlit Cloud does not change the Python version of an existing app in place.
-
 ## How To Use
 
 1. Upload a CSV file from the file uploader.
@@ -100,9 +76,7 @@ The report is generated with `pool_size=1` so it works reliably on Windows and r
 
 For large datasets, use the row slider in the app to profile a smaller sample first.
 
-## OneDrive Warning
 
-This project currently lives inside a OneDrive folder. Virtual environments contain thousands of generated dependency files, so OneDrive may show sync or delete prompts when packages are installed or cleaned up.
 
 Recommended setup:
 
